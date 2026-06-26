@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c330e5742272330debc989ea6c77c31c",
+    "content-hash": "af13c4b67ed35c1b51ad1c86e77600c3",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2943,48 +2943,6 @@
                 "source": "https://github.com/mercadopago/sdk-php/tree/3.7.1"
             },
             "time": "2025-10-31T12:40:56+00:00"
-        },
-        {
-            "name": "mercadopago/sdk",
-            "version": "v0.5.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mercadopago/DEPRECATED-sdk-php.git",
-                "reference": "67f65735d5d720a7fc2569163f5c7d150adc613d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/DEPRECATED-sdk-php/zipball/67f65735d5d720a7fc2569163f5c7d150adc613d",
-                "reference": "67f65735d5d720a7fc2569163f5c7d150adc613d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "lib/mercadopago.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Horacio Casatti",
-                    "email": "horacio.casatti@mercadolibre.com"
-                }
-            ],
-            "description": "MercadoPago SDK module for Payments integration.",
-            "keywords": [
-                "mercadopago",
-                "sdk"
-            ],
-            "support": {
-                "issues": "https://github.com/mercadopago/DEPRECATED-sdk-php/issues",
-                "source": "https://github.com/mercadopago/DEPRECATED-sdk-php/tree/v0.5.6"
-            },
-            "abandoned": true,
-            "time": "2019-04-15T14:29:38+00:00"
         },
         {
             "name": "monolog/monolog",
