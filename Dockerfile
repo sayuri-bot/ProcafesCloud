@@ -15,10 +15,14 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# 🔴 1. COPIAR TODO PRIMERO (CLAVE)
 COPY . .
 
-# 🔴 2. Instalar dependencias después
+# 🔴 IMPORTANTE: crear carpetas necesarias
+RUN mkdir -p bootstrap/cache storage/framework storage/framework/cache storage/framework/sessions storage/framework/views
+
+# permisos
+RUN chmod -R 775 storage bootstrap/cache
+
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
