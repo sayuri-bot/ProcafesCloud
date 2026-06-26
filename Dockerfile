@@ -2,9 +2,13 @@ FROM php:8.2-cli
 
 # Dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    git unzip zip \
+    git unzip zip curl \
     libzip-dev libpng-dev libjpeg62-turbo-dev libfreetype6-dev \
     libonig-dev libxml2-dev
+
+# Node.js (NECESARIO PARA VITE)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
 
 # Extensiones PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -17,21 +21,23 @@ WORKDIR /var/www
 
 COPY . .
 
-# 🔴 IMPORTANTE: crear carpetas necesarias
-RUN mkdir -p bootstrap/cache storage/framework storage/framework/cache storage/framework/sessions storage/framework/views
-
-# permisos
-RUN chmod -R 775 storage bootstrap/cache
-
+# Instalar PHP deps
 RUN composer install \
     --no-dev \
     --optimize-autoloader \
     --no-interaction
 
-# Permisos
+# 🔥 INSTALAR FRONTEND
+RUN npm install
+RUN npm run build
+
+# carpetas necesarias
+RUN mkdir -p bootstrap/cache storage/framework storage/framework/cache storage/framework/sessions storage/framework/views
+
+# permisos
 RUN chmod -R 775 storage bootstrap/cache
 
-# Cache Laravel (seguro)
+# limpiar cache Laravel
 RUN php artisan config:clear || true
 RUN php artisan route:clear || true
 RUN php artisan view:clear || true
